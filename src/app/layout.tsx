@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ReactNode } from 'react';
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,14 +29,30 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
-  children
-}: Readonly<{
+interface RootLayoutProps {
   children: ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-    <body className={`${inter.className} bg-[#120113] gradient-background text-zinc-300`}>{children}</body>
+    <Head>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            var _mtm = window._mtm = window._mtm || [];
+            _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+            (function() {
+              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+              g.async=true; g.src='https://analytics.maersux.dev/js/container_z4cXSLfk.js'; s.parentNode.insertBefore(g,s);
+            })();
+          `
+        }}
+      />
+    </Head>
+    <body className={`${inter.className} bg-[#120113] gradient-background text-zinc-300`}>
+    {children}
+    </body>
     </html>
   );
 }

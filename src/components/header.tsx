@@ -21,5 +21,5 @@ export const MainHeading: FC = () => {
         repeat={Infinity}
       />
     </h1>
-  )
-}
+  );
+};
