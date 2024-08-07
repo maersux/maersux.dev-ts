@@ -2,13 +2,22 @@
 
 import { useEffect } from 'react';
 
-export default function ClientScript() {
+declare global {
+  interface Window {
+    _mtm: Array<{ 'mtm.startTime': number, event: string }>;
+  }
+}
+
+export default function Tracking() {
   useEffect(() => {
+    window._mtm = window._mtm || [];
+    window._mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+
     const matomoScript = document.createElement('script');
     matomoScript.async = true;
     matomoScript.src = 'https://analytics.maersux.dev/js/container_z4cXSLfk.js';
-    const firstScript = document.head.firstChild;
-    document.head.insertBefore(matomoScript, firstScript)
+    const firstScript = document.getElementsByTagName('script')[0];
+    firstScript?.parentNode?.insertBefore(matomoScript, firstScript);
   }, []);
 
   return null;
