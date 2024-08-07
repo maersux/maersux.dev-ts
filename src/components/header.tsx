@@ -5,7 +5,7 @@ import { FC } from 'react';
 
 export const MainHeading: FC = () => {
   return (
-    <h1 className="flex flex-col gap-2 text-3xl md:text-6xl font-extrabold">
+    <h1 className="flex flex-col gap-2 text-3xl md:text-6xl font-extrabold text-center">
       <span className="inline-block text-transparent bg-fuchsia-400 bg-clip-text bg-gradient-to-br from-fuchsia-800 to-fuchsia-400">
         Hi, I am
       </span>
