@@ -1,4 +1,4 @@
-# maersux.dev
+# maersux.dev with Next.js
 
 simple personal website, just a basic one-pager with some fancy typing effect.
 
